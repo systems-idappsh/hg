@@ -1,0 +1,279 @@
+/* /* ══════════════════════════════════════════════
+   TRAVELING DOT PROCESS — scoped to #travelingDotProcess
+   Sin reglas globales: no toca *, body ni :root
+   ══════════════════════════════════════════════ */
+
+/* ── Section container ── */
+#travelingDotProcess {
+  /* --- Tokens locales (no contaminan :root) --- */
+  --tdp-bg: #031b35;
+  --tdp-primary: #2E9F91;
+  --tdp-primary-light: #51d6c7;
+  --tdp-blue: #4E96C8;
+  --tdp-white: #ffffff;
+  --tdp-muted: rgba(255, 255, 255, .68);
+  --tdp-border: rgba(255, 255, 255, .14);
+  --tdp-card: rgba(255, 255, 255, .075);
+
+  position: relative;
+  padding: 56px 24px;
+  border-radius: 32px;
+  border: 1px solid var(--tdp-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .025)),
+    rgba(0, 0, 0, .18),
+    var(--tdp-bg);
+  overflow: hidden;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .35);
+  width: min(1120px, 100%);
+  margin: auto;
+  color: var(--tdp-white);
+}
+
+/* ── Header ── */
+#travelingDotProcess .proceso-servicios {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+#travelingDotProcess .proceso-servicios .section-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(255, 255, 255, .55);
+}
+
+#travelingDotProcess .proceso-servicios h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.05;
+  margin-bottom: 14px;
+  color: var(--tdp-white);
+}
+
+#travelingDotProcess .proceso-servicios p {
+  color: var(--tdp-muted);
+  max-width: 640px;
+  margin: auto;
+}
+
+/* ── Process wrapper ── */
+#travelingDotProcess .process-wrap {
+  position: relative;
+  padding-top: 18px;
+}
+
+/* ── SVG path ── */
+#travelingDotProcess .path-svg {
+  position: absolute;
+  left: 6%;
+  top: 34px;
+  width: 88%;
+  height: 96px;
+  overflow: visible;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#travelingDotProcess .path-base {
+  fill: none;
+  stroke: rgba(255, 255, 255, .15);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+#travelingDotProcess .path-active {
+  fill: none;
+  stroke: url(#grad);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  filter: drop-shadow(0 0 12px rgba(81, 214, 199, .8));
+}
+
+#travelingDotProcess.is-animating .path-active {
+  animation: tdp-drawPath 3.8s ease forwards;
+}
+
+@keyframes tdp-drawPath {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ── Traveling dot ── */
+#travelingDotProcess .travel-dot {
+  position: absolute;
+  left: 6%;
+  top: 35px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--tdp-primary-light);
+  box-shadow:
+    0 0 12px var(--tdp-primary-light),
+    0 0 28px rgba(81, 214, 199, .9);
+  offset-path: path("M 20 50 C 160 0, 250 100, 380 50 S 600 0, 760 50 S 940 100, 1080 50");
+  offset-distance: 0%;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#travelingDotProcess.is-animating .travel-dot {
+  animation: tdp-travelDot 3.8s cubic-bezier(.65, 0, .35, 1) forwards;
+}
+
+@keyframes tdp-travelDot {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* ── Steps grid ── */
+#travelingDotProcess .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 3;
+}
+
+#travelingDotProcess .process-step {
+  text-align: center;
+  min-width: 0;
+  cursor: pointer;
+}
+
+#travelingDotProcess .step-circle {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  color: rgba(255, 255, 255, .45);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .16), rgba(255, 255, 255, .04) 60%),
+    rgba(4, 40, 72, .95);
+  border: 1px solid rgba(255, 255, 255, .18);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, .04);
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease,
+    background .35s ease;
+}
+
+#travelingDotProcess .step-circle i {
+  color: rgba(255, 255, 255, .45);
+  transition:
+    color .35s ease,
+    transform .35s cubic-bezier(.2, .8, .2, 1),
+    filter .35s ease;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+/* ── Active / complete states ── */
+#travelingDotProcess .process-step.is-complete .step-circle {
+  border-color: rgba(81, 214, 199, .75);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(81, 214, 199, .42), rgba(46, 159, 145, .12) 60%),
+    rgba(4, 40, 72, .95);
+  box-shadow:
+    0 0 0 8px rgba(46, 159, 145, .10),
+    0 0 34px rgba(81, 214, 199, .45);
+  transform: translateY(-7px) scale(1.06);
+}
+
+#travelingDotProcess .process-step:nth-child(1).is-complete .step-circle i { color: #51d6c7; }
+#travelingDotProcess .process-step:nth-child(2).is-complete .step-circle i { color: #4E96C8; }
+#travelingDotProcess .process-step:nth-child(3).is-complete .step-circle i { color: #ffd166; }
+#travelingDotProcess .process-step:nth-child(4).is-complete .step-circle i { color: #ff7b7b; }
+
+#travelingDotProcess .process-step.is-complete .step-circle i {
+  transform: scale(1.12);
+  filter:
+    drop-shadow(0 0 6px rgba(81, 214, 199, .85))
+    drop-shadow(0 0 16px rgba(81, 214, 199, .65));
+}
+
+/* ── Hover ── */
+#travelingDotProcess .process-step:hover .step-circle {
+  transform: translateY(-8px) scale(1.08);
+  border-color: rgba(81, 214, 199, .9);
+  box-shadow:
+    0 0 0 10px rgba(46, 159, 145, .12),
+    0 0 42px rgba(81, 214, 199, .55);
+}
+
+#travelingDotProcess .process-step:hover .step-circle i {
+  color: #ffffff;
+  transform: scale(1.18) rotate(-6deg);
+  filter:
+    drop-shadow(0 0 10px rgba(81, 214, 199, 1))
+    drop-shadow(0 0 22px rgba(81, 214, 199, .8));
+}
+
+/* ── Step text ── */
+#travelingDotProcess .process-step h4 {
+  font-size: .98rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  color: var(--tdp-white);
+}
+
+#travelingDotProcess .process-step p {
+  font-size: .88rem;
+  color: var(--tdp-muted);
+  max-width: 230px;
+  margin: auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  #travelingDotProcess {
+    padding: 34px 14px;
+    border-radius: 24px;
+  }
+
+  #travelingDotProcess .proceso-servicios {
+    margin-bottom: 28px;
+  }
+
+  #travelingDotProcess .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  #travelingDotProcess .process-step {
+    padding: 16px 10px;
+    border-radius: 20px;
+    background: var(--tdp-card);
+    border: 1px solid rgba(255, 255, 255, .09);
+  }
+
+  #travelingDotProcess .step-circle {
+    width: 52px;
+    height: 52px;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  #travelingDotProcess .process-step h4 {
+    font-size: .82rem;
+  }
+
+  #travelingDotProcess .process-step p {
+    font-size: .74rem;
+  }
+
+  #travelingDotProcess .path-svg,
+  #travelingDotProcess .travel-dot {
+    display: none;
+  }
+}

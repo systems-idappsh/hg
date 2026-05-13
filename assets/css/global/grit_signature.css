@@ -1,0 +1,400 @@
+:root {
+    --travel-cyan: #3fd9e4;
+    --travel-purple: #8338ec;
+    --travel-dark: #1a2a3a;
+    --bg-neumorphic: #ffffffeb;
+    --card-surface: rgba(255, 255, 255, .94);
+    --card-border: rgba(12, 75, 84, .14);
+    --card-shadow: 0 14px 36px rgba(7, 60, 121, .10);
+    --card-shadow-hover: 0 24px 60px rgba(7, 60, 121, .18);
+    --transition-smooth: transform .32s cubic-bezier(.22, 1, .36, 1), box-shadow .32s cubic-bezier(.22, 1, .36, 1), color .22s ease, background-color .22s ease, border-color .22s ease, opacity .22s ease;
+}
+
+/* Contenedor de la sección */
+.services {
+    background-color: var(--bg-neumorphic);
+    padding: clamp(42px, 6vw, 60px) 20px;
+}
+
+/* Grid del contenedor de tarjetas */
+.services .container-grid {
+    display: grid;
+    gap: clamp(14px, 2vw, 22px);
+    max-width: 1180px;
+    margin: clamp(24px, 4vw, 36px) auto 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* --- TARJETA SIGNATURE --- */
+.signature-card {
+    background: linear-gradient(180deg, var(--card-surface), rgba(246, 250, 255, .92));
+    border-radius: 20px;
+    padding: 18px 18px 16px;
+    position: relative;
+    box-shadow: var(--card-shadow);
+    overflow: visible;
+    transition: var(--transition-smooth);
+    border: 1px solid var(--card-border);
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    transform: translateZ(0);
+    will-change: transform;
+    min-height: 100%;
+    isolation: isolate;
+}
+
+.signature-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, rgba(63, 217, 228, .17), transparent 46%);
+    opacity: .72;
+    z-index: -1;
+}
+
+/* Efecto Reveal de Imagen */
+.signature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity .55s ease, transform .55s cubic-bezier(.22, 1, .36, 1);
+    z-index: -2;
+    filter: grayscale(100%) brightness(1.1);
+    border-radius: inherit;
+    transform: scale(1.02);
+}
+
+/* Imágenes específicas */
+.card-visa::before { background-image: url('https://images.unsplash.com/photo-1549294413-26f1d5241045?q=80&w=800'); }
+.card-passport::before { background-image: url('https://images.unsplash.com/photo-1534394415125-0f01cc64aa61?q=80&w=800'); }
+.card-citas::before { background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800'); }
+.card-asesoria::before { background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800'); }
+
+.signature-card:hover,
+.signature-card:focus-within {
+    transform: translate3d(0, -7px, 0) scale(1.012);
+    border-color: rgba(46, 159, 145, .38);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.signature-card:hover::before,
+.signature-card:focus-within::before {
+    opacity: .08;
+    transform: scale(1);
+}
+
+/* Elementos internos */
+.card-header-signature {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+}
+
+.icon-circle-travel {
+    width: 52px;
+    height: 52px;
+    background: rgba(255, 255, 255, .88);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 6px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 10px 24px rgba(7, 60, 121, .12);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(63, 217, 228, .16);
+}
+
+.signature-card:hover .icon-circle-travel,
+.signature-card:focus-within .icon-circle-travel {
+    transform: translateY(-2px) scale(1.04) rotate(-1deg);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 14px 28px rgba(63, 217, 228, .18);
+    border-color: rgba(131, 56, 236, .26);
+}
+
+.icon-circle-travel i {
+    font-size: 1.45rem;
+    background: linear-gradient(135deg, var(--travel-cyan), var(--travel-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.signature-card h3 {
+    font-size: clamp(.92rem, 1.15vw, 1.12rem);
+    font-weight: 850;
+    color: var(--travel-dark);
+    margin: 2px 0 0;
+    text-transform: uppercase;
+    letter-spacing: -.02em;
+    line-height: 1.08;
+}
+
+.desc-signature {
+    font-size: .86rem;
+    color: #4b5563;
+    line-height: 1.36;
+    margin: 0 0 12px;
+    max-width: 21ch;
+}
+
+/* Lista de servicios */
+.services-list-travel {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: auto 0 0;
+    display: grid;
+    gap: 6px;
+}
+
+.services-list-travel li {
+    --tooltip-y: 8px;
+    font-size: .82rem;
+    line-height: 1.18;
+    padding: 7px 9px;
+    color: var(--travel-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    background: rgba(255,255,255,.52);
+    border: 1px solid rgba(12, 75, 84, .07);
+    transition: var(--transition-smooth);
+}
+
+.services-list-travel li i {
+    color: var(--travel-cyan);
+    font-size: .72rem;
+    width: 14px;
+    min-width: 14px;
+    text-align: center;
+    margin-right: 0;
+    transition: transform .22s cubic-bezier(.22, 1, .36, 1), color .22s ease;
+}
+
+.services-list-travel li:hover,
+.services-list-travel li:focus-visible {
+    color: var(--travel-purple);
+    background: linear-gradient(135deg, rgba(63, 217, 228, .12), rgba(131, 56, 236, .09));
+    border-color: rgba(131, 56, 236, .18);
+    transform: translateX(3px);
+    box-shadow: 0 8px 18px rgba(7, 60, 121, .08);
+}
+
+.services-list-travel li:hover i,
+.services-list-travel li:focus-visible i {
+    color: var(--travel-purple);
+    transform: scale(1.15) rotate(-4deg);
+}
+
+.services-list-travel li[data-info]::after {
+    content: attr(data-info);
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: calc(100% + 8px);
+    z-index: 20;
+    padding: 9px 10px;
+    border-radius: 12px;
+    background: rgba(10, 23, 42, .96);
+    color: #fff;
+    font-size: .72rem;
+    font-weight: 500;
+    line-height: 1.28;
+    box-shadow: 0 16px 34px rgba(2, 6, 23, .22);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(var(--tooltip-y)) scale(.98);
+    transition: opacity .2s ease, transform .22s cubic-bezier(.22, 1, .36, 1);
+}
+
+.services-list-travel li[data-info]::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    bottom: calc(100% + 2px);
+    border: 6px solid transparent;
+    border-top-color: rgba(10, 23, 42, .96);
+    opacity: 0;
+    transform: translateY(var(--tooltip-y));
+    transition: opacity .2s ease, transform .22s cubic-bezier(.22, 1, .36, 1);
+    z-index: 21;
+}
+
+.services-list-travel li[data-info]:hover::after,
+.services-list-travel li[data-info]:hover::before,
+.services-list-travel li[data-info]:focus-visible::after,
+.services-list-travel li[data-info]:focus-visible::before {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.services-list-travel li:nth-last-child(-n + 2)::after {
+    bottom: auto;
+    top: calc(100% + 8px);
+}
+
+.services-list-travel li:nth-last-child(-n + 2)::before {
+    bottom: auto;
+    top: calc(100% + 2px);
+    border-top-color: transparent;
+    border-bottom-color: rgba(10, 23, 42, .96);
+}
+
+/* Botón Estilo App */
+.btn-action-travel {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--travel-cyan), var(--travel-purple));
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-action-travel:active {
+    transform: scale(0.95);
+}
+
+.brand-footer-signature {
+    font-size: 0.6rem;
+    color: #a0aec0;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* =============================================
+   RESPONSIVE (LOOK APP NATIVA)
+   ============================================= */
+
+@media (max-width: 1100px) {
+    .services .container-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 760px;
+    }
+}
+
+@media (max-width: 640px) {
+    .services {
+        padding: 36px 12px;
+    }
+
+    .services .container-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0;
+        margin-top: 22px;
+    }
+
+    .signature-card {
+        border-radius: 18px;
+        padding: 12px 10px 10px;
+        box-shadow: 0 10px 26px rgba(7, 60, 121, .10);
+    }
+
+    .card-header-signature {
+        gap: 4px;
+    }
+
+    .icon-circle-travel {
+        width: 42px;
+        height: 42px;
+        border-radius: 15px;
+        margin-bottom: 4px;
+    }
+
+    .icon-circle-travel i {
+        font-size: 1.14rem;
+    }
+
+    .signature-card h3 {
+        font-size: .78rem;
+        line-height: 1.08;
+        min-height: 1.72em;
+        display: grid;
+        place-items: center;
+    }
+
+    .desc-signature {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: .68rem;
+        line-height: 1.24;
+        margin-bottom: 8px;
+        max-width: none;
+    }
+
+    .services-list-travel {
+        gap: 5px;
+    }
+
+    .services-list-travel li {
+        font-size: .68rem;
+        padding: 6px 6px;
+        border-radius: 10px;
+        gap: 5px;
+    }
+
+    .services-list-travel li i {
+        font-size: .62rem;
+        width: 11px;
+        min-width: 11px;
+    }
+
+    .services-list-travel li[data-info]::after {
+        left: -4px;
+        right: -4px;
+        font-size: .66rem;
+        padding: 8px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .services .container-grid {
+        gap: 8px;
+    }
+
+    .signature-card {
+        padding: 10px 8px 9px;
+    }
+
+    .signature-card h3 {
+        font-size: .72rem;
+    }
+
+    .desc-signature {
+        font-size: .64rem;
+    }
+
+    .services-list-travel li {
+        font-size: .64rem;
+        padding: 5px;
+    }
+}
+
+@media (hover: none) {
+  .signature-card:hover { transform: none; }
+  .signature-card:hover .icon-circle-travel { transform: none; }
+  .services-list-travel li:hover { transform: none; }
+}

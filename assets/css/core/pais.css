@@ -1,0 +1,326 @@
+/* =========================================================
+   TRAVEL NOW — PÁGINA DE PAÍS v2.0
+========================================================= */
+
+/* === PAGE HERO === */
+.pais-hero {
+  height: 380px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 60px;
+}
+.pais-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.65));
+}
+
+/* Progress bar de lectura */
+.read-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: var(--color-accent);
+  z-index: 999;
+  width: 0%;
+  transition: width .1s linear;
+}
+
+/* === COUNTRY IDENTITY CARD === */
+.country-card {
+  position: relative;
+  z-index: 1;
+  transform: translateY(56px);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-xl);
+  width: 90%;
+  max-width: 760px;
+  border: 1px solid rgba(255,255,255,.8);
+}
+
+.country-flag {
+  width: 72px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.country-info { flex: 1; }
+.country-region {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.country-info h1 {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: var(--color-primary);
+  margin: 4px 0 2px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+.country-info p { font-size: .85rem; color: var(--color-text-muted); }
+
+.country-card .btn-wa {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: .8rem;
+  padding: 10px 18px;
+}
+
+/* === BREADCRUMB DE PAÍS === */
+.pais-breadcrumb {
+  margin-top: 80px;
+  margin-bottom: 8px;
+}
+
+/* === DOCUMENTO PRINCIPAL === */
+.pais-doc {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 var(--container-pad) 80px;
+}
+
+/* === SELECTOR DE SECCIONES === */
+.faq-nav {
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+
+.faq-nav label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.faq-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: .95rem;
+  font-family: var(--font-body);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%230B1F3A' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+.faq-select:focus { border-color: var(--color-accent); }
+
+/* === SECCIONES DEL DOCUMENTO === */
+.doc-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 100px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.doc-section.section-active {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(47,164,255,.1), var(--shadow-md);
+}
+
+.doc-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  background: var(--color-primary);
+  color: #fff;
+}
+.doc-section-header i { font-size: 1rem; color: var(--color-accent); }
+.doc-section-header h2 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+.doc-section-body { padding: 24px; background: var(--color-bg-card); }
+
+.doc-section-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.doc-section-body ul li {
+  display: flex;
+  gap: 10px;
+  font-size: .925rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+.doc-section-body ul li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.doc-section-body p {
+  font-size: .925rem;
+  line-height: 1.75;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+.doc-section-body p:last-child { margin-bottom: 0; }
+.doc-section-body strong { color: var(--color-primary); font-weight: 600; }
+
+/* Grilla de tiempos */
+.tiempos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.tiempo-item {
+  background: var(--color-bg-soft);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--color-border);
+}
+.tiempo-item .label {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+.tiempo-item .value {
+  font-size: .9rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* CTA de costos */
+.costo-cta {
+  background: linear-gradient(135deg, rgba(37,211,102,.08), rgba(37,211,102,.04));
+  border: 1px solid rgba(37,211,102,.3);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-align: center;
+}
+.costo-cta p {
+  font-size: .9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+.costo-cta strong { display: block; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 8px; }
+
+/* Logística */
+.logistica-steps { display: flex; flex-direction: column; gap: 14px; }
+.logistica-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.step-num {
+  width: 28px; height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Políticas */
+.politicas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.politica-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--color-bg-soft);
+  border-radius: var(--radius-md);
+  font-size: .875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  border-left: 3px solid var(--color-border);
+}
+.politica-num {
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  font-size: .8rem;
+  padding-top: 1px;
+}
+
+/* Documentos de interés */
+.docs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+  font-size: .875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+.docs-link:hover { background: var(--color-primary); color: #fff; }
+
+/* Volver */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  padding: 8px 0;
+  margin-bottom: 32px;
+}
+.back-btn:hover { color: var(--color-primary); gap: 12px; }
+.back-btn i { transition: transform var(--transition-fast); }
+.back-btn:hover i { transform: translateX(-3px); }
+
+@media (max-width: 640px) {
+  .pais-hero { height: 280px; padding-bottom: 40px; }
+  .country-card { flex-direction: column; text-align: center; transform: translateY(40px); padding: 20px; }
+  .country-card .btn-wa { width: 100%; justify-content: center; }
+  .tiempos-grid { grid-template-columns: 1fr; }
+  .pais-breadcrumb { margin-top: 60px; }
+}

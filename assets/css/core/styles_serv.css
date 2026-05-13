@@ -1,0 +1,557 @@
+
+/* =========================================================
+   HERO SUPERIOR
+   ========================================================= */
+.hero-split{
+  display:grid;
+  grid-template-columns:60% 40%;
+  min-height:520px;
+}
+
+.hero-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-text{
+  background:#f4f6fb;
+  padding:70px 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.hero-text h1{
+  font-size:2rem;
+  margin-bottom:18px;
+}
+
+.hero-text p{
+  color:#555;
+  margin-bottom:20px;
+}
+
+
+/* =========================================================
+   BLOQUES GENERALES (split)
+   ========================================================= */
+.split{
+  display:grid;
+  grid-template-columns:50% 50%;
+  align-items:center;
+  min-height:460px;
+}
+
+.split.reverse{
+  direction:rtl;
+}
+.split.reverse .split-text{
+  direction:ltr;
+}
+
+.split-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.split-text{
+  padding:70px;
+}
+
+.split-text h2{
+  margin-bottom:15px;
+  font-size:1.5rem;
+}
+
+.split-text p{
+  color:#555;
+  margin-bottom:15px;
+}
+
+.split-text li{
+  margin-bottom:8px;
+  color:#555;
+}
+
+
+/* =========================================================
+   SECCIÓN FONDO AZUL (como captura)
+   ========================================================= */
+.process{
+  background:#dfe7f1;
+}
+
+.process .split-text{
+  padding:80px;
+}
+
+
+/* =========================================================
+   TARJETAS PASAPORTE (iconos centrados)
+   ========================================================= */
+.passport-steps{
+  background:#dfe7f1;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.passport-steps .grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  max-width:900px;
+  margin:30px auto 0;
+}
+
+.passport-steps .card{
+  background:white;
+  padding:22px;
+  border-radius:10px;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+  font-size:.9rem;
+}
+
+
+/* =========================================================
+   FAQ LATERAL
+   ========================================================= */
+.faq{
+  display:grid;
+  grid-template-columns:45% 55%;
+  gap:40px;
+  align-items:center;
+  padding:80px;
+}
+
+.faq img{
+  width:100%;
+  border-radius:12px;
+}
+
+.faq h2{
+  margin-bottom:20px;
+}
+
+details{
+  border-bottom:1px solid #ddd;
+  padding:14px 0;
+}
+
+summary{
+  cursor:pointer;
+  font-weight:600;
+}
+
+details p{
+  color:#555;
+  margin-top:8px;
+}
+
+
+/* =========================================================
+   CTA FINAL
+   ========================================================= */
+.cta{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.cta h2{
+  margin-bottom:10px;
+}
+
+.cta p{
+  color:#666;
+  margin-bottom:20px;
+}
+
+
+
+/* ---------- Servicios: Carrusel principal ---------- */
+.carousel {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: var(--space-6);
+}
+
+.carousel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  min-height: 380px;
+}
+
+@media (max-width: 840px) {
+  .carousel__grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+.carousel__media {
+  position: relative;
+  background: var(--bg-soft);
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.carousel__media-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) saturate(1.1);
+  opacity: 0.55;
+  transform: scale(1.1);
+}
+
+.carousel__media-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: contain;
+  padding: var(--space-6);
+}
+
+.carousel__info {
+  padding: var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+@media (max-width: 840px) {
+  .carousel__info { padding: var(--space-6); }
+}
+
+.carousel__tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  background: var(--accent-50);
+  color: var(--accent-700);
+  border-radius: var(--r-full);
+  letter-spacing: 0.04em;
+}
+
+.carousel__title {
+  font-size: clamp(var(--fs-xl), 2.4vw, var(--fs-3xl));
+  font-weight: var(--fw-black);
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.carousel__desc {
+  color: var(--text-muted);
+  font-size: var(--fs-md);
+  max-width: 50ch;
+}
+
+.carousel__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.carousel__list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: var(--fs-sm);
+  color: var(--text);
+}
+
+.carousel__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--brand-50) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c5ba6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center / 10px 10px no-repeat;
+}
+
+.carousel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--divider);
+  background: var(--bg-soft);
+  flex-wrap: wrap;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink-300);
+  transition: background var(--t-fast) var(--ease),
+              width var(--t-base) var(--ease);
+}
+
+.dots button:hover { background: var(--ink-400); }
+
+.dots button[aria-current="true"] {
+  background: var(--brand);
+  width: 28px;
+  border-radius: var(--r-full);
+}
+
+.arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+}
+
+.arrow-btn:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  transform: translateY(-1px);
+}
+
+.arrow-btn svg { width: 18px; height: 18px; }
+
+/* Quick chips below carousel */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--divider);
+}
+
+.chips button {
+  padding: 6px 12px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--text-muted);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  transition: all var(--t-fast) var(--ease);
+}
+
+.chips button:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.chips button[aria-pressed="true"] {
+  background: var(--brand);
+  color: var(--white);
+  border-color: var(--brand);
+}
+
+
+
+
+
+
+/* =====================================
+   IMAGEN TITULO RESPONSIVE
+===================================== */
+
+#img_ind_titpop{
+  display:block;
+
+  width:min(80vw, 420px); /* proporcional a pantalla */
+  height:auto;
+
+  max-width:100%;
+  object-fit:contain;
+}
+
+/* =====================================
+   CONTENEDOR CENTRADO
+===================================== */
+
+.column.shrink{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+/* =====================================
+   CONTENEDOR GENERAL
+===================================== */
+
+#div_ind_bodpop{
+  width:100%;
+  margin:auto;
+  padding:20px 0;
+}
+
+/* =====================================
+   AREA DEL CARRUSEL
+===================================== */
+
+#div_popular_carousel{
+  position:relative;
+  width:100%;
+}
+
+/* espacio entre slides */
+.slick-track{
+  display:flex !important;
+  gap:20px;
+}
+
+/* =====================================
+   TARJETA VISA
+===================================== */
+
+.car_cont_visa{
+  background:#ffffff;
+  border-radius:14px;
+  padding:18px 12px;
+  text-align:center;
+
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+/* hover elegante */
+.car_cont_visa:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 28px rgba(0,0,0,.15);
+}
+
+/* =====================================
+   BANDERAS
+===================================== */
+
+.img_visa_flag{
+  display:block;
+  margin:auto;
+
+  width:min(140px, 60%);
+  height:auto;
+
+  border-radius:6px;
+  object-fit:contain;
+}
+
+/* =====================================
+   NOMBRE PAIS
+===================================== */
+
+.spa_visa_name{
+  display:block;
+  margin-top:10px;
+
+  font-size:14px;
+  font-weight:600;
+  color:#5b3a82;
+}
+
+/* =====================================
+   FLECHAS SLIDER
+===================================== */
+
+.slick-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+
+  width:38px;
+  height:38px;
+  cursor:pointer;
+  transition:transform .25s ease;
+}
+
+.slick-arrow:hover{
+  transform:translateY(-50%) scale(1.1);
+}
+
+#img_carrow_popular_l{
+  left:-10px;
+}
+
+#img_carrow_popular_r{
+  right:-10px;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width:768px){
+
+  .img_visa_flag{
+    width:min(100px,70%);
+  }
+
+  .slick-track{
+    gap:12px;
+  }
+
+}
+
+
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media(max-width:900px){
+
+.hero-split,
+.split,
+.faq{
+  grid-template-columns:1fr;
+}
+
+.hero-text,
+.split-text{
+  padding:40px 25px;
+}
+
+.passport-steps .grid{
+  grid-template-columns:1fr 1fr;
+}
+
+}

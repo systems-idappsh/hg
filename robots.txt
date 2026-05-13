@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /assets/css/legacy/
+Disallow: /colores.html
+Disallow: /docs/
+
+Sitemap: https://travel-now.com.mx/sitemap.xml

@@ -1,0 +1,66 @@
+#video-banner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 65px 30px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+#video-banner a {
+  display: block;
+  width: 100%;
+  max-width: 752px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+#banner-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#video-overlay {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#video-overlay span {
+  color: #140cf4dd;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  text-shadow: 2px 2px 6px rgba(2, 62, 112, 0);
+}
+
+
+#video-banner a:hover {
+  
+  max-width: 772px;
+  opacity: 75%;
+  transition: opacity 0.8s ease;
+
+
+  
+}
+
+#video-banner a:hover #video-overlay span {
+  color: #1ce3a4f9;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  display: block;
+  text-shadow: 2px 2px 6px rgba(2, 62, 112, 0);
+}
